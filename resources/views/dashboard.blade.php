@@ -93,9 +93,11 @@
         .btn-group {
             margin-top: 20px;
         }
-         /* Background for the main content with a semi-transparent overlay */
-         #sidebar {
-            background-image: url("{{ asset('images/main-content.jpg') }}"); /* Replace with your image URL */
+
+        /* Background for the main content with a semi-transparent overlay */
+        #sidebar {
+            background-image: url("{{ asset('images/main-content.jpg') }}");
+            /* Replace with your image URL */
             /* background-size: cover; */
             background-position: center;
             position: relative;
@@ -110,13 +112,69 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.2); /* Adjust transparency level */
+            background-color: rgba(0, 0, 0, 0.2);
+            /* Adjust transparency level */
             z-index: -1;
         }
 
         /* Text color adjusted for contrast */
-        #sidebar h4, #sidebar .list-group-item a {
-            color: white; /* Adjust to ensure good contrast with the background */
+        #sidebar h4,
+        #sidebar .list-group-item a {
+            color: white;
+            /* Adjust to ensure good contrast with the background */
+        }
+
+        .container-sections {
+            display: flex;
+            height: 40vh;
+        }
+
+        .section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .section-1 {
+            background: url("{{ asset('images/bg1.jpg') }}") no-repeat center center/cover;
+        }
+
+        .section-2 {
+            background: url("{{ asset('images/bg2.jpg') }}") no-repeat center center/cover;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #f0f0f0;
         }
     </style>
 </head>
@@ -131,7 +189,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="position-sticky mt-4">
-                    <h1 class="h4 text-center">Dashboard</h1>
+                    <h1 class="h4 text-left">Dashboard</h1>
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active fw-bold" href="#">
@@ -144,11 +202,11 @@
                                 Material Management
                                 <!-- Arrow Icon -->
                                 <span class="float-end">
-                                    <i class="rotate-icon bi bi-chevron-right collapsed" data-bs-toggle="collapse" href="#ModulSubmenu" aria-expanded="false"></i>
+                                    <i class="rotate-icon bi bi-chevron-right collapsed" data-bs-toggle="collapse" href="#MMSubmenu" aria-expanded="false"></i>
                                 </span>
                             </a>
                             <!-- Sub-menu -->
-                            <ul class="collapse list-unstyled" id="ModulSubmenu">
+                            <ul class="collapse list-unstyled" id="MMSubmenu">
                                 <li class="nav-item">
                                     <a class="nav-link ms-4" href="#">Masterdata</a>
                                 </li>
@@ -163,6 +221,48 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-bold " href="#">
+                                Production Planning
+                                <!-- Arrow Icon -->
+                                <span class="float-end">
+                                    <i class="rotate-icon bi bi-chevron-right collapsed" data-bs-toggle="collapse" href="#PPSubmenu" aria-expanded="false"></i>
+                                </span>
+                            </a>
+                            <!-- Sub-menu -->
+                            <ul class="collapse list-unstyled" id="PPSubmenu">
+                                <li class="nav-item">
+                                    <a class="nav-link ms-4" href="#">Bill of Material (BOM)</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link ms-4" href="#">Production Order (PRO)</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link ms-4" href="#">Good Issue (GI)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-bold " href="#">
+                                Sales and Distributor
+                                <!-- Arrow Icon -->
+                                <span class="float-end">
+                                    <i class="rotate-icon bi bi-chevron-right collapsed" data-bs-toggle="collapse" href="#SDSubmenu" aria-expanded="false"></i>
+                                </span>
+                            </a>
+                            <!-- Sub-menu -->
+                            <ul class="collapse list-unstyled" id="SDSubmenu">
+                                <li class="nav-item">
+                                    <a class="nav-link ms-4" href="#">Sales Order (SO)</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link ms-4" href="#">Delivery</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link ms-4" href="#">Shipment</a>
+                                </li>
+                            </ul>
+                        </li>
                         <!-- Add more sidebar items here -->
                     </ul>
                 </div>
@@ -171,13 +271,13 @@
 
             <!-- Main content -->
             <main id="main-content" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
                 <!-- Navbar with search and profile -->
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom navbar">
-                    <nav class="navbar bg-body-tertiary">
-                        <div class="container-fluid">
+                    <nav class="navbar navbar-light">
+                        <div class="container">
                             <a class="navbar-brand" href="#">
-                                <img src="{{ asset('images/logo.png') }}" alt="Logo" width="50" height="24" class="d-inline-block align-text-top">
-                               
+                                <img src="{{ asset('images/logo.png') }}" alt="" width="100 " height="50">
                             </a>
                         </div>
                     </nav>
@@ -203,7 +303,28 @@
                         </ul>
                     </div>
                 </div>
+                <img src="{{ asset('images/dashboard-logo.png') }}" class="img-fluid" alt="...">
+                <div class="container-sections">
+                    <!-- Section 1 -->
+                    <div class="section section-1">
+                        <div>
+                            <h1>Oracle Cloud</h1>
+                            <h2>Applications</h2>
+                            <p>A complete suite of cloud applications delivering consistent processes and data across your business</p>
+                            <button class="btn">Explore cloud apps</button>
+                        </div>
+                    </div>
 
+                    <!-- Section 2 -->
+                    <div class="section section-2">
+                        <div>
+                            <h1>Oracle Cloud</h1>
+                            <h2>Infrastructure</h2>
+                            <p>An automated, secure platform for migrating enterprise workloads and building new cloud native apps</p>
+                            <button class="btn">Explore OCI</button>
+                        </div>
+                    </div>
+                </div>
                 <!-- Dashboard content -->
                 <!-- <div class="row">
                     <div class="col-md-6">
@@ -264,24 +385,21 @@
                     </div>
                 </div> -->
 
-                
+
                 <div class="container mt-5">
                     <!-- Your Shortcuts Section -->
                     <div class="row dashboard-section">
                         <div class="col-md-12">
-                            <h4>Your Shortcuts</h4>
+                            <h4>WHITE-E</h4>
                             <div class="row">
                                 <div class="col-md-3 shortcut-group">
-                                    <a href="#">Item</a>
+                                    <a href="#">Material Management (MM)</a>
                                 </div>
                                 <div class="col-md-3 shortcut-group">
-                                    <a href="#">Customer</a>
+                                    <a href="#">Production Planning (PP)</a>
                                 </div>
                                 <div class="col-md-3 shortcut-group">
-                                    <a href="#">Supplier</a>
-                                </div>
-                                <div class="col-md-3 shortcut-group">
-                                    <a href="#">Sales Invoice</a>
+                                    <a href="#">Sales and Distibutor (SD)</a>
                                 </div>
                             </div>
                         </div>
@@ -290,30 +408,28 @@
                     <!-- Reports & Masters Section -->
                     <div class="row dashboard-section">
                         <div class="col-md-4">
-                            <h4>Accounting</h4>
+                            <h4>Material Management (MM) </h4>
                             <ul class="list-group">
-                                <li class="list-group-item"><a href="#">Chart of Accounts</a></li>
-                                <li class="list-group-item"><a href="#">Company</a></li>
-                                <li class="list-group-item"><a href="#">Customer</a></li>
-                                <li class="list-group-item"><a href="#">Supplier</a></li>
+                                <li class="list-group-item"><a href="#">Masterdata</a></li>
+                                <li class="list-group-item"><a href="#">Inventory</a></li>
+                                <li class="list-group-item"><a href="#">Procurement</a></li>
+                                <li class="list-group-item"><a href="#">Material Control</Code></a></li>
                             </ul>
                         </div>
                         <div class="col-md-4">
-                            <h4>Stock</h4>
+                            <h4>Production Planning</h4>
                             <ul class="list-group">
-                                <li class="list-group-item"><a href="#">Item</a></li>
-                                <li class="list-group-item"><a href="#">Warehouse</a></li>
-                                <li class="list-group-item"><a href="#">Brand</a></li>
-                                <li class="list-group-item"><a href="#">Unit of Measure (UOM)</a></li>
-                                <li class="list-group-item"><a href="#">Stock Reconciliation</a></li>
+                                <li class="list-group-item"><a href="#">Bill of Material (BOM)</a></li>
+                                <li class="list-group-item"><a href="#">Production Order (PRO)</a></li>
+                                <li class="list-group-item"><a href="#">Good Issue (GI)</a></li>
                             </ul>
                         </div>
                         <div class="col-md-4">
-                            <h4>CRM</h4>
+                            <h4>Sales and Distributor (SD)</h4>
                             <ul class="list-group">
-                                <li class="list-group-item"><a href="#">Lead</a></li>
-                                <li class="list-group-item"><a href="#">Customer Group</a></li>
-                                <li class="list-group-item"><a href="#">Territory</a></li>
+                                <li class="list-group-item"><a href="#">Sales Order (SO)</a></li>
+                                <li class="list-group-item"><a href="#">Delivery</a></li>
+                                <li class="list-group-item"><a href="#">Shipment</a></li>
                             </ul>
                         </div>
                     </div>
@@ -323,20 +439,18 @@
                         <div class="col-md-4">
                             <h4>Data Import and Settings</h4>
                             <ul class="list-group">
-                                <li class="list-group-item"><a href="#">Import Data</a></li>
-                                <li class="list-group-item"><a href="#">Opening Invoice Creation Tool</a></li>
-                                <li class="list-group-item"><a href="#">Chart of Accounts Importer</a></li>
-                                <li class="list-group-item"><a href="#">Letter Head</a></li>
-                                <li class="list-group-item"><a href="#">Email Account</a></li>
+                                <li class="list-group-item"><a href="#">Transaksi </a></li>
+                                <li class="list-group-item"><a href="#">Masterdata</a></li>
+                                <li class="list-group-item"><a href="#">Account Management</a></li>
                             </ul>
                         </div>
                     </div>
 
                     <!-- Edit and New buttons -->
-                    <div class="btn-group">
+                    <!-- <div class="btn-group">
                         <button class="btn btn-outline-primary">Edit</button>
                         <button class="btn btn-primary">New</button>
-                    </div>
+                    </div> -->
                 </div>
 
                 @yield('content')
@@ -359,6 +473,7 @@
             mainContent.classList.toggle('expand-content');
         });
     </script>
+
 </body>
 
 </html>
